@@ -205,11 +205,10 @@ static void
 s_console (const char *format, ...)
 {
     time_t curtime = time (NULL);
-	struct tm loctime;
-	localtime_s(&loctime, &curtime);
+	struct tm* loctime = localtime(&curtime);
 
     char *formatted = new char[20];
-    strftime (formatted, 20, "%y-%m-%d %H:%M:%S ", &loctime);
+    strftime (formatted, 20, "%y-%m-%d %H:%M:%S ", loctime);
     printf ("%s", formatted);
     delete[] formatted;
 
