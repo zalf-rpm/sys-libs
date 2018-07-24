@@ -85,12 +85,12 @@ s_dump (zmq::socket_t & socket)
         socket.recv(&message);
 
         //  Dump the message as text or binary
-        int size = message.size();
+        size_t size = message.size();
         std::string data(static_cast<char*>(message.data()), size);
 
         bool is_text = true;
 
-        int char_nbr;
+		size_t char_nbr;
         unsigned char byte;
         for (char_nbr = 0; char_nbr < size; char_nbr++) {
             byte = data [char_nbr];
