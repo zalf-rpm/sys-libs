@@ -410,14 +410,14 @@ namespace zmq
 
         inline ~context_t () ZMQ_NOTHROW
         {
-            int rc = zmq_ctx_destroy (ptr);
-            ZMQ_ASSERT (rc == 0);
+					int rc = zmq_ctx_term(ptr); // destroy(ptr);
+					ZMQ_ASSERT(rc == 0);
         }
 
         inline void close() ZMQ_NOTHROW
         {
-            int rc = zmq_ctx_destroy (ptr);
-            ZMQ_ASSERT (rc == 0);
+					int rc = zmq_ctx_term(ptr); // destroy(ptr);
+					ZMQ_ASSERT(rc == 0);
         }
 
         //  Be careful with this, it's probably only useful for
